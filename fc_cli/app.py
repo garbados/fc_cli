@@ -20,6 +20,9 @@ def get_identity(config, email):
       return res.status_code, res.json()
     else:
       profile = fc.get(email=email)
-      profile['_id'] = email
-      res = db.post(params=profile)
-      return res.status_code, profile
+      if profile['status'] == 200:
+        profile['_id'] = email
+        res = db.post(params=profile)
+        return res.status_code, profile
+      else:
+        return profile['status'], profile
