@@ -9,5 +9,10 @@ setup(name='FC_CLI',
       author_email='garbados@gmail.com',
       url='https://github.com/garbados/fc_cli',
       packages=['fc_cli'],
+      entry_points={
+          'console_scripts': [
+              'fc_cli = fc_cli.__init__:main',
+          ],
+      },
       test_suite="test"
       )
