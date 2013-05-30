@@ -2,6 +2,11 @@
 
 from setuptools import setup
 
+def requirements():
+  with open('requirements.txt', 'r') as f:
+    reqs = [line.strip() for line in f.readlines()]
+  return reqs
+
 setup(name='FC_CLI',
       version='0.0.2',
       description='Get a FullContact report on somebody, and store it in Cloudant',
@@ -14,5 +19,6 @@ setup(name='FC_CLI',
               'fc_cli = fc_cli.__init__:main',
           ],
       },
+      install_requires=requirements(),
       test_suite="test"
       )
